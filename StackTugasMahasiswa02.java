@@ -46,6 +46,19 @@ public class StackTugasMahasiswa02 {
         }
     }
 
+    public Mahasiswa02 bottom() {
+        if (!isEmpty()) {
+            return stack[0];
+        } else {
+            System.out.println("Stack kosong!");
+            return null;
+        }
+    }
+
+    public int count() {
+        return top + 1;
+    }
+
     public void print() {
         if (isEmpty()) {
             System.out.println("Stack kosong!");
@@ -54,5 +67,22 @@ public class StackTugasMahasiswa02 {
                 System.out.println(stack[i].nama + "\t" + stack[i].nim + "\t" + stack[i].kelas);
             }
         }
+    }
+
+    public String konversiDesimalKeBiner(int nilai) {
+        if (nilai == 0) {
+            return "0";
+        }
+        StackKonversi02 stack = new StackKonversi02();
+        while (nilai > 0) {
+            int sisa = nilai % 2;
+            stack.push(sisa);
+            nilai = nilai / 2;
+        }
+        String biner = new String();
+        while (!stack.isEmpty()) {
+            biner += stack.pop();
+        }
+        return biner;
     }
 }
